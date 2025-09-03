@@ -1,0 +1,178 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #7f00ff, #e100ff);
+    color: white;
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+header {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px 40px;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffccff;
+}
+
+/* Home Section */
+.home {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.home-content h2 {
+    font-size: 35px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.home-content span {
+    color: #ffccff;
+}
+
+.home-content button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background: white;
+    color: #7f00ff;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.home-content button:hover {
+    background: #ffccff;
+    color: #000;
+}
+
+/* About Section */
+.about, .skills, .projects, .contact {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+/* Skills Section */
+.skill-bars {
+    max-width: 600px;
+    margin: auto;
+}
+
+.skill {
+    margin: 15px 0;
+    text-align: left;
+}
+
+.bar {
+    background: #fff3;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 10px;
+}
+
+.progress {
+    height: 10px;
+    border-radius: 10px;
+    animation: grow 2s ease-in-out;
+}
+
+.progress.html { width: 90%; background: #ffeb3b; }
+.progress.css { width: 80%; background: #4cafef; }
+.progress.js { width: 70%; background: #ff9800; }
+
+/* Project Cards */
+.project-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    width: 250px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Contact Button */
+.contact-btn {
+    display: inline-block;
+    background: white;
+    color: #7f00ff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.contact-btn:hover {
+    background: #ffccff;
+    color: #000;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes grow {
+    from { width: 0; }
+    to { width: 100%; }
+}
