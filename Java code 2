@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Registration - Assignment 3</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #ffffff);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #1565c0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+        }
+
+        .error {
+            border: 2px solid red;
+        }
+
+        .success {
+            border: 2px solid green;
+        }
+
+        button {
+            background: #1565c0;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #0d47a1;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #1565c0;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        #message {
+            text-align: center;
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Nexa Web Workshop 2026</h1>
+</header>
+
+<div class="container">
+
+<form id="regForm">
+
+<label>Name</label>
+<input type="text" id="name">
+
+<label>Email</label>
+<input type="email" id="email">
+
+<label>Phone</label>
+<input type="text" id="phone">
+
+<label>Date of Birth</label>
+<input type="date" id="dob">
+
+<label>Gender</label>
+<select id="gender">
+    <option value="">Select</option>
+    <option>Male</option>
+    <option>Female</option>
+</select>
+
+<label>Event</label>
+<select id="event">
+    <option value="">Select Event</option>
+    <option>Nexa Web Workshop</option>
+    <option>UI/UX Seminar</option>
+</select>
+
+<label>Mode</label>
+<select id="mode">
+    <option value="">Select Mode</option>
+    <option>Online</option>
+    <option>Offline</option>
+</select>
+
+<label>College</label>
+<input type="text" id="college">
+
+<br>
+<input type="checkbox" id="confirm">
+I confirm that the above details are correct.
+
+<br><br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<div id="message"></div>
+
+</div>
+
+<h2 style="text-align:center;">Registered Participants</h2>
+
+<table id="table">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Event</th>
+        <th>Mode</th>
+    </tr>
+</table>
+
+<script>
+document.getElementById("regForm").addEventListener("submit", function(e) {
+
+    e.preventDefault();   // Prevent page reload
+
+    let name = document.getElementById("name");
+    let email = document.getElementById("email");
+    let phone = document.getElementById("phone");
+    let dob = document.getElementById("dob");
+    let gender = document.getElementById("gender");
+    let event = document.getElementById("event");
+    let mode = document.getElementById("mode");
+    let college = document.getElementById("college");
+    let confirm = document.getElementById("confirm");
+
+    let valid = true;
+
+    function checkField(field, condition) {
+        if (!condition) {
+            field.classList.add("error");
+            field.classList.remove("success");
+            valid = false;
+        } else {
+            field.classList.remove("error");
+            field.classList.add("success");
+        }
+    }
+
+    checkField(name, name.value.trim() !== "");
+    checkField(email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value));
+    checkField(phone, /^[0-9]{10}$/.test(phone.value));
+    checkField(dob, dob.value !== "");
+    checkField(gender, gender.value !== "");
+    checkField(event, event.value !== "");
+    checkField(mode, mode.value !== "");
+    checkField(college, college.value.trim() !== "");
+
+    if (!confirm.checked) {
+        alert("Please confirm the declaration.");
+        valid = false;
+    }
+
+    if (valid) {
+
+        let table = document.getElementById("table");
+        let row = table.insertRow(-1);
+
+        row.insertCell(0).innerHTML = name.value;
+        row.insertCell(1).innerHTML = email.value;
+        row.insertCell(2).innerHTML = phone.value;
+        row.insertCell(3).innerHTML = event.value;
+        row.insertCell(4).innerHTML = mode.value;
+
+        document.getElementById("message").innerHTML = "Registration Successful!";
+
+        setTimeout(function() {
+            document.getElementById("message").innerHTML = "";
+        }, 3000);
+
+        document.getElementById("regForm").reset();
+
+        let inputs = document.querySelectorAll("input, select");
+        inputs.forEach(function(input) {
+            input.classList.remove("success");
+        });
+
+    }
+
+});
+</script>
+
+</body>
+</html>
