@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Real-Time Notification Widget</title>
+
+<style>
+body{
+font-family: Arial;
+background:#f4f4f4;
+margin:0;
+padding:0;
+text-align:center;
+}
+
+header{
+background:#333;
+color:white;
+padding:20px;
+}
+
+.container{
+margin-top:40px;
+}
+
+button{
+padding:10px 20px;
+font-size:16px;
+background:#007BFF;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+#notification{
+position:fixed;
+top:20px;
+right:20px;
+background:#28a745;
+color:white;
+padding:15px 20px;
+border-radius:5px;
+display:none;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>Real-Time Notification Widget</h1>
+</header>
+
+<div class="container">
+<p>Click the button to trigger a notification.</p>
+<button onclick="showNotification()">Show Notification</button>
+</div>
+
+<div id="notification">
+New Notification: System Update Successful!
+</div>
+
+<script>
+function showNotification(){
+let notification = document.getElementById("notification");
+
+notification.style.display = "block";
+
+setTimeout(function(){
+notification.style.display = "none";
+},3000);
+}
+</script>
+
+</body>
+</html>
