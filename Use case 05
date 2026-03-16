@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Online Quiz Application</title>
+
+<style>
+
+body{
+font-family: Arial;
+text-align:center;
+background-color:#f2f2f2;
+}
+
+.container{
+background:white;
+width:400px;
+margin:auto;
+padding:20px;
+margin-top:50px;
+border-radius:10px;
+}
+
+button{
+padding:10px 20px;
+margin-top:10px;
+background-color:blue;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Online Quiz</h2>
+
+<p id="question"></p>
+
+<input type="radio" name="option" value="0"> <span id="opt1"></span><br>
+<input type="radio" name="option" value="1"> <span id="opt2"></span><br>
+<input type="radio" name="option" value="2"> <span id="opt3"></span><br>
+<input type="radio" name="option" value="3"> <span id="opt4"></span><br>
+
+<button onclick="nextQuestion()">Next</button>
+
+<h3 id="score"></h3>
+
+</div>
+
+<script>
+
+var questions = [
+{
+q:"What does HTML stand for?",
+options:["Hyper Text Markup Language","High Text Machine Language","Hyperlinks Text Mark Language","Home Tool Mark Language"],
+answer:0
+},
+
+{
+q:"Which language is used for styling web pages?",
+options:["HTML","CSS","Python","Java"],
+answer:1
+},
+
+{
+q:"Which language is used for web development?",
+options:["JavaScript","C","C++","Java"],
+answer:0
+}
+];
+
+var index=0;
+var score=0;
+
+function loadQuestion(){
+
+document.getElementById("question").innerHTML = questions[index].q;
+
+document.getElementById("opt1").innerHTML = questions[index].options[0];
+document.getElementById("opt2").innerHTML = questions[index].options[1];
+document.getElementById("opt3").innerHTML = questions[index].options[2];
+document.getElementById("opt4").innerHTML = questions[index].options[3];
+
+}
+
+function nextQuestion(){
+
+var options = document.getElementsByName("option");
+
+for(var i=0;i<options.length;i++)
+{
+if(options[i].checked)
+{
+if(options[i].value == questions[index].answer)
+{
+score++;
+}
+}
+options[i].checked=false;
+}
+
+index++;
+
+if(index < questions.length)
+{
+loadQuestion();
+}
+else
+{
+document.querySelector(".container").innerHTML =
+"<h2>Your Score : "+score+"</h2>";
+}
+
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
