@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>User Profile Editor</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f2f2f2;
+text-align:center;
+}
+
+.container{
+background:white;
+width:350px;
+margin:auto;
+padding:20px;
+margin-top:50px;
+border-radius:10px;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+padding:10px 20px;
+margin:5px;
+background:blue;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+#savedData{
+margin-top:20px;
+font-size:16px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>User Profile Editor</h2>
+
+<input type="text" id="name" placeholder="Enter Name">
+<input type="email" id="email" placeholder="Enter Email">
+<input type="text" id="phone" placeholder="Enter Phone">
+
+<br>
+
+<button onclick="saveProfile()">Save</button>
+<button onclick="editProfile()">Edit</button>
+
+<div id="savedData"></div>
+
+</div>
+
+<script>
+
+function saveProfile(){
+
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+var phone = document.getElementById("phone").value;
+
+// Save data in local storage
+localStorage.setItem("name", name);
+localStorage.setItem("email", email);
+localStorage.setItem("phone", phone);
+
+// Display saved data
+document.getElementById("savedData").innerHTML =
+"<h3>Saved Profile</h3>" +
+"Name: " + name + "<br>" +
+"Email: " + email + "<br>" +
+"Phone: " + phone;
+
+}
+
+// Load data for editing
+function editProfile(){
+
+var name = localStorage.getItem("name");
+var email = localStorage.getItem("email");
+var phone = localStorage.getItem("phone");
+
+document.getElementById("name").value = name;
+document.getElementById("email").value = email;
+document.getElementById("phone").value = phone;
+
+}
+
+// Auto load saved data when page opens
+window.onload = function(){
+
+editProfile();
+
+}
+
+</script>
+
+</body>
+</html>
