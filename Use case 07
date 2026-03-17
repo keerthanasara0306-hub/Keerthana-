@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Interactive Registration Form</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#f2f2f2;
+text-align:center;
+}
+
+.container{
+background:white;
+width:350px;
+margin:auto;
+padding:20px;
+margin-top:50px;
+border-radius:10px;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+padding:10px 20px;
+background:blue;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+.error{
+color:red;
+font-size:14px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Registration Form</h2>
+
+<input type="text" id="name" placeholder="Enter Name">
+<div class="error" id="nameError"></div>
+
+<input type="email" id="email" placeholder="Enter Email">
+<div class="error" id="emailError"></div>
+
+<input type="password" id="password" placeholder="Enter Password">
+<div class="error" id="passwordError"></div>
+
+<button onclick="validateForm()">Register</button>
+
+</div>
+
+<script>
+
+function validateForm(){
+
+var name = document.getElementById("name").value;
+var email = document.getElementById("email").value;
+var password = document.getElementById("password").value;
+
+var valid = true;
+
+// Name validation
+if(name == ""){
+document.getElementById("nameError").innerHTML = "Name is required";
+valid = false;
+}else{
+document.getElementById("nameError").innerHTML = "";
+}
+
+// Email validation
+if(email == "" || !email.includes("@")){
+document.getElementById("emailError").innerHTML = "Enter valid email";
+valid = false;
+}else{
+document.getElementById("emailError").innerHTML = "";
+}
+
+// Password validation
+if(password.length < 6){
+document.getElementById("passwordError").innerHTML = "Password must be at least 6 characters";
+valid = false;
+}else{
+document.getElementById("passwordError").innerHTML = "";
+}
+
+// Success
+if(valid){
+alert("Registration Successful ✅");
+}
+
+}
+
+</script>
+
+</body>
+</html>
