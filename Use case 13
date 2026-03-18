@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dark / Light Mode</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .light {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .dark {
+            background: #111;
+            color: #ffffff;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="light">
+
+<h1>Dark / Light Mode Toggle</h1>
+
+<button onclick="toggleMode()">Switch Mode</button>
+
+<script>
+function toggleMode() {
+    let body = document.body;
+
+    if (body.classList.contains("light")) {
+        body.classList.remove("light");
+        body.classList.add("dark");
+        localStorage.setItem("mode", "dark");
+    } else {
+        body.classList.remove("dark");
+        body.classList.add("light");
+        localStorage.setItem("mode", "light");
+    }
+}
+
+// Load saved mode
+let savedMode = localStorage.getItem("mode");
+if (savedMode) {
+    document.body.classList.remove("light");
+    document.body.classList.add(savedMode);
+}
+</script>
+
+</body>
+</html>
