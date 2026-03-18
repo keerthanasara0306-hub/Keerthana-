@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News Feed Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #111;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: #1c1c1c;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            margin: 10px 0 5px;
+        }
+
+        .card p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>News Feed Dashboard</h1>
+
+<div class="container" id="newsContainer"></div>
+
+<script>
+let newsData = [
+    {
+        title: "Technology News",
+        desc: "New AI technology is growing rapidly.",
+        img: "https://via.placeholder.com/300"
+    },
+    {
+        title: "Sports Update",
+        desc: "Team won the championship match.",
+        img: "https://via.placeholder.com/300"
+    },
+    {
+        title: "Education News",
+        desc: "New courses introduced for students.",
+        img: "https://via.placeholder.com/300"
+    }
+];
+
+let container = document.getElementById("newsContainer");
+
+newsData.forEach(news => {
+    let card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+        <img src="${news.img}">
+        <h3>${news.title}</h3>
+        <p>${news.desc}</p>
+    `;
+
+    container.appendChild(card);
+});
+</script>
+
+</body>
+</html>
