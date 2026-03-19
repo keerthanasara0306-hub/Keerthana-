@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Step Form</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #111;
+            color: white;
+            text-align: center;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .container {
+            background: #1c1c1c;
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            background: blue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Multi-Step Form</h2>
+
+<div class="form-step active">
+    <h3>Step 1</h3>
+    <input type="text" placeholder="Enter Name">
+</div>
+
+<div class="form-step">
+    <h3>Step 2</h3>
+    <input type="email" placeholder="Enter Email">
+</div>
+
+<div class="form-step">
+    <h3>Step 3</h3>
+    <input type="text" placeholder="Enter Phone">
+</div>
+
+<button onclick="prevStep()">Previous</button>
+<button onclick="nextStep()">Next</button>
+
+</div>
+
+<script>
+let steps = document.querySelectorAll(".form-step");
+let current = 0;
+
+function showStep(index) {
+    steps.forEach(step => step.classList.remove("active"));
+    steps[index].classList.add("active");
+}
+
+function nextStep() {
+    if (current < steps.length - 1) {
+        current++;
+        showStep(current);
+    } else {
+        alert("Form Submitted Successfully!");
+    }
+}
+
+function prevStep() {
+    if (current > 0) {
+        current--;
+        showStep(current);
+    }
+}
+</script>
+
+</body>
+</html>
