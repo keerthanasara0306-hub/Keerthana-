@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Calendar</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #111;
+            color: white;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        .calendar {
+            width: 300px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .day {
+            padding: 10px;
+            background: #1c1c1c;
+            border-radius: 5px;
+        }
+
+        .today {
+            background: green;
+        }
+
+        .header {
+            font-weight: bold;
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Event Calendar</h2>
+
+<div class="calendar" id="calendar"></div>
+
+<script>
+let calendar = document.getElementById("calendar");
+
+// Days header
+let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+days.forEach(day => {
+    let d = document.createElement("div");
+    d.className = "day header";
+    d.innerText = day;
+    calendar.appendChild(d);
+});
+
+// Get current date
+let date = new Date();
+let today = date.getDate();
+
+// Add dates
+for (let i = 1; i <= 30; i++) {
+    let d = document.createElement("div");
+    d.className = "day";
+    d.innerText = i;
+
+    if (i === today) {
+        d.classList.add("today");
+    }
+
+    calendar.appendChild(d);
+}
+</script>
+
+</body>
+</html>
