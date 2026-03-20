@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #111;
+            color: white;
+            margin: 0;
+        }
+
+        .header {
+            background: #333;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .card {
+            background: #1c1c1c;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h2>Student Dashboard</h2>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <h3>Profile</h3>
+        <p>Name: Keerthana</p>
+        <p>Course: BCA</p>
+        <p>Year: 3rd Year</p>
+    </div>
+
+    <div class="card">
+        <h3>Marks</h3>
+        <p>Maths: 85</p>
+        <p>Computer: 90</p>
+        <p>English: 80</p>
+    </div>
+
+    <div class="card">
+        <h3>Attendance</h3>
+        <p>85%</p>
+    </div>
+
+    <div class="card">
+        <h3>Tasks</h3>
+        <ul>
+            <li>Complete Project</li>
+            <li>Submit Assignment</li>
+            <li>Study for Exam</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
