@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complete Front-End App</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #111;
+            color: white;
+        }
+
+        .header {
+            background: #333;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .nav {
+            background: #222;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .nav button {
+            margin: 5px;
+            padding: 10px;
+            border: none;
+            background: blue;
+            color: white;
+            cursor: pointer;
+        }
+
+        .section {
+            display: none;
+            padding: 20px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .card {
+            background: #1c1c1c;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <h2>Front-End Application</h2>
+</div>
+
+<div class="nav">
+    <button onclick="showSection('dashboard')">Dashboard</button>
+    <button onclick="showSection('form')">Form</button>
+    <button onclick="showSection('api')">API</button>
+</div>
+
+<div id="dashboard" class="section active">
+    <div class="card">
+        <h3>Dashboard</h3>
+        <p>Welcome to the dashboard</p>
+    </div>
+</div>
+
+<div id="form" class="section">
+    <div class="card">
+        <h3>Form</h3>
+        <input type="text" id="name" placeholder="Enter Name">
+        <button onclick="saveData()">Save</button>
+        <p id="output"></p>
+    </div>
+</div>
+
+<div id="api" class="section">
+    <div class="card">
+        <h3>API Data</h3>
+        <button onclick="getData()">Load Data</button>
+        <p id="apiData"></p>
+    </div>
+</div>
+
+<script>
+function showSection(id) {
+    let sections = document.querySelectorAll(".section");
+    sections.forEach(sec => sec.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+
+function saveData() {
+    let name = document.getElementById("name").value;
+    localStorage.setItem("name", name);
+    document.getElementById("output").innerText = "Saved: " + name;
+}
+
+function getData() {
+    fetch("https://jsonplaceholder.typicode.com/todos/1")
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("apiData").innerText = data.title;
+    });
+}
+</script>
+
+</body>
+</html>
